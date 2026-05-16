@@ -24,7 +24,7 @@ A tidy dataset has:\
 
 ## Read in the data
 
--   View the data in the data file, under subfile **raw**.
+-   View the data in the data file, under subfile **raw_data**.
 
 # Data
 
@@ -36,7 +36,7 @@ library(tidyverse)
 library(here)
 
 # Import data
-Survey_MILLI <- readxl::read_xlsx(here::here("data", "raw", "DatatoUseforChem806a02.xlsx"))
+Survey_MILLI <- readxl::read_xlsx(here::here("data", "raw_data", "DatatoUseforChem806a02.xlsx"))
 
 # View data
 head(Survey_MILLI)
@@ -50,7 +50,7 @@ glimpse(Survey_MILLI)
 #| message: false
 #| warning: false
 
-Survey_MILLI <- readxl::read_xlsx(here::here("data", "raw", "DatatoUseforChem806a02.xlsx"))
+Survey_MILLI <- readxl::read_xlsx(here::here("data", "raw_data", "DatatoUseforChem806a02.xlsx"))
 
 ```
 
