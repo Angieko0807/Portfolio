@@ -1,9 +1,22 @@
 ---
 title: "Portfolio"
 Author: Angie Kochkarova
+Published: May 16th 2026
 ---
 
-Welcome! Hello World! 
-This is my portfolio for learning **R, data analysis, GitHub, and Quarto**.
+## Course Lessons
 
-## Assignments
+-   Introduction to Literate Analysis Using Quarto
+-   Tidy Data
+-   Cleaning and Wrangling Data
+-   Data Visualization
+-   Plotting with ggplot2
+-   Collaborative Reports and Publishing to the Web
+-   Writing Functions
+-   Project Management with Github
+
+## Assignment Links
+
+-   [Introduction to Quarto](assignments/a01.html)
+
+-   [Data Cleaning Assignment](assignments/a02.html)
