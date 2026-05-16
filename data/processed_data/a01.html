@@ -106,17 +106,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>##Introduction</p>
+<section id="introduction" class="level1">
+<h1>Introduction</h1>
 <p>This document represents a literate analysis practice using seawater chemistry data. The data examined is the nitrogen and phosphate concentrations in arctic oceans to explore how closely the samples match the Redfield ratio (16:1), which reflects nutrient balance in marine ecosystems.</p>
-<p>##About the data</p>
+</section>
+<section id="about-the-data" class="level1">
+<h1>About the data</h1>
 <p>The dataset <strong>BGchem2008data.csv</strong> was obtained from the Arctic Data Center (https://arcticdata.io/metacat/d1/mn/v2/object/urn%3Auuid%3A35ad7624-b159-4e29-a700-0c0770419941).</p>
 <p>The data was downloaded on August 8, 2025.</p>
-<p>##Setup</p>
+</section>
+<section id="setup" class="level1">
+<h1>Setup</h1>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>here() starts at C:/Users/bloom/OneDrive/Documents/Data Science/Angie_Ko_Portfolio</code></pre>
+<pre><code>here() starts at C:/Users/bloom/OneDrive/Documents/import-template-Angieko0807</code></pre>
 </div>
 </div>
 <div class="cell">
@@ -125,7 +130,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>bg_chem <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>,<span class="st">"raw_data"</span>, <span class="st">"BGchem2008data.csv"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>bg_chem <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>,<span class="st">"raw"</span>, <span class="st">"BGchem2008data.csv"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Rows: 70 Columns: 19
 ── Column specification ────────────────────────────────────────────────────────
@@ -138,26 +143,18 @@ dttm  (1): Time
 ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 </div>
 </div>
-<pre><code>## Analysis
-
-We calculate the mean nitrate (NO3), nitrite (NO2), ammonium (NH4), 
-and phosphate (P) concentrations using the mean() function.
-
-
-::: {.cell}
-
-:::
-
-
-::: {.cell}
-
-```{.r .cell-code}
-nitrate &lt;- mean(bg_chem$NO3, na.rm = TRUE)
-nitrite &lt;- mean(bg_chem$NO2, na.rm = TRUE)
-amm     &lt;- mean(bg_chem$NH4, na.rm = TRUE)
-phos    &lt;- mean(bg_chem$P,   na.rm = TRUE)</code></pre>
-<p>:::</p>
-<p>#Ratio of Nitrogen vs Phosphorous</p>
+</section>
+<section id="analysis" class="level1">
+<h1>Analysis</h1>
+<p>We calculate the mean nitrate (NO3), nitrite (NO2), ammonium (NH4), and phosphate (P) concentrations using the mean() function.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>nitrate <span class="ot">&lt;-</span> <span class="fu">mean</span>(bg_chem<span class="sc">$</span>NO3, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>nitrite <span class="ot">&lt;-</span> <span class="fu">mean</span>(bg_chem<span class="sc">$</span>NO2, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>amm     <span class="ot">&lt;-</span> <span class="fu">mean</span>(bg_chem<span class="sc">$</span>NH4, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>phos    <span class="ot">&lt;-</span> <span class="fu">mean</span>(bg_chem<span class="sc">$</span>P,   <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<section id="ratio-of-nitrogen-vs-phosphorous" class="level2">
+<h2 class="anchored" data-anchor-id="ratio-of-nitrogen-vs-phosphorous">Ratio of Nitrogen vs Phosphorous</h2>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>ratio <span class="ot">&lt;-</span> (nitrate <span class="sc">+</span> nitrite <span class="sc">+</span> amm) <span class="sc">/</span> phos</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>ratio</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -166,7 +163,10 @@ phos    &lt;- mean(bg_chem$P,   na.rm = TRUE)</code></pre>
 </div>
 </div>
 <p>The Redfield ratio for this dataset is approximately 6.22.</p>
-<p>##Plot RedField Ratio</p>
+</section>
+</section>
+<section id="plot-redfield-ratio" class="level1">
+<h1>Plot RedField Ratio</h1>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -176,7 +176,9 @@ phos    &lt;- mean(bg_chem$P,   na.rm = TRUE)</code></pre>
 </div>
 </div>
 </div>
-<p>##Conclusion</p>
+</section>
+<section id="conclusion" class="level1">
+<h1>Conclusion</h1>
 <p>About the results:</p>
 <p>Observing that the Nitrogen (N) to Phosphorous (P) ratio is 6.22, this is much lower than RedField ratio of 16. From the generated scatterplot there shows a positive correlation between N and P, which is ideal. Though, what makes the ratio lower than the ideal RedField ratio is the amount of N present. This indicates that the arctic samples are relatively nitrogen-limited, and therefore will not be ideal for sustaining diverse life forms.</p>
 <p>In this mini-analysis, we:</p>
@@ -185,6 +187,7 @@ phos    &lt;- mean(bg_chem$P,   na.rm = TRUE)</code></pre>
 <p>Calculated simple nutrient means</p>
 <p>Computed a mean nitrogen:phosphate ratio</p>
 <p>Created a basic plot relating total nitrogen to phosphate</p>
+</section>
 
 </main>
 <!-- /main column -->

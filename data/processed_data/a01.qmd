@@ -6,17 +6,17 @@ execute:
   echo: true
 ---
 
-##Introduction
+# Introduction
 
 This document represents a literate analysis practice using seawater chemistry data. The data examined is the nitrogen and phosphate concentrations in arctic oceans to explore how closely the samples match the Redfield ratio (16:1), which reflects nutrient balance in marine ecosystems.
 
-##About the data
+# About the data
 
 The dataset **BGchem2008data.csv** was obtained from the Arctic Data Center (https://arcticdata.io/metacat/d1/mn/v2/object/urn%3Auuid%3A35ad7624-b159-4e29-a700-0c0770419941). 
 
 The data was downloaded on August 8, 2025.
 
-##Setup
+# Setup
 
 ```{r}
 library(readr)
@@ -29,7 +29,7 @@ library(here)
 #| message: false
 #| warning: false
 
-bg_chem <- read_csv(here::here("data","raw_data", "BGchem2008data.csv"))
+bg_chem <- read_csv(here::here("data","raw", "BGchem2008data.csv"))
 ```
 ```{r}
 #| eval: false
@@ -42,8 +42,7 @@ summary(bg_chem)
 unique(bg_chem$Date)
 ```
 
-```
-## Analysis
+# Analysis
 
 We calculate the mean nitrate (NO3), nitrite (NO2), ammonium (NH4), 
 and phosphate (P) concentrations using the mean() function.
@@ -56,7 +55,7 @@ amm     <- mean(bg_chem$NH4, na.rm = TRUE)
 phos    <- mean(bg_chem$P,   na.rm = TRUE)
 ```
 
-#Ratio of Nitrogen vs Phosphorous  
+## Ratio of Nitrogen vs Phosphorous  
 ```{r}
 ```{r}
 ratio <- (nitrate + nitrite + amm) / phos
@@ -65,7 +64,7 @@ ratio
 
 The Redfield ratio for this dataset is approximately `r round(ratio, 2)`.
 
-##Plot RedField Ratio
+# Plot RedField Ratio
 
 ```{r}
 #| echo: false
@@ -79,7 +78,7 @@ plot(
 )
 ```
 
-##Conclusion
+# Conclusion
 
 About the results:
 
